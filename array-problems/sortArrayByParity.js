@@ -8,15 +8,15 @@
  * @return {number[]}
  */
 const sortArrayByParity = function(A) {
-    let evenArray = [];
-    let oddArray = [];
-    for (let i = 0; i < A.length; i++) {
-        if ((A[i] % 2) === 0) {
-            evenArray.push(A[i]);
-        } else {
-            oddArray.push(A[i]);
-        }
-    }
-    const finalArr = [...evenArray, ...oddArray];
-    return finalArr;
+	let evenArray = [];
+	let oddArray = [];
+	for (let i = 0; i < A.length; i++) {
+		if ((A[i] % 2) === 0) {
+			evenArray.push(A[i]);
+		} else {
+			oddArray.push(A[i]);
+		}
+	}
+	const finalArr = [...evenArray, ...oddArray];
+	return finalArr;
 };

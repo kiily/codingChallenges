@@ -15,36 +15,36 @@ It is possible to use both of these rules at the same time.
 Given a list of emails, we send one email to each address in the list.  How many different addresses actually receive mails? } emails 
  */
 
-const emails = ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"];
+const emails = ['test.email+alex@leetcode.com','test.e.mail+bob.cathy@leetcode.com','testemail+david@lee.tcode.com'];
 /**
  * @param {string[]} emails
  * @return {number}
  */
 const numUniqueEmails = function(emails) {
-    let finalEmails = [];
+	let finalEmails = [];
     
-    emails.forEach(email => checkMail(filterStr(email)));
+	emails.forEach(email => checkMail(filterStr(email)));
     
-    function checkMail(filteredStr) {
-        const noDotsStr = removeDots(filteredStr);
-        if (noDotsStr.includes('+')) {
-            filteredStr = noDotsStr.split('+')[0];
-        }
-        if (finalEmails.indexOf(filteredStr) < 0) {
-            finalEmails.push(filteredStr);
-        }
-    }
+	function checkMail(filteredStr) {
+		const noDotsStr = removeDots(filteredStr);
+		if (noDotsStr.includes('+')) {
+			filteredStr = noDotsStr.split('+')[0];
+		}
+		if (finalEmails.indexOf(filteredStr) < 0) {
+			finalEmails.push(filteredStr);
+		}
+	}
     
     
-    function removeDots(filteredStr) {
-        return filteredStr.replace('.', '');
-    }
+	function removeDots(filteredStr) {
+		return filteredStr.replace('.', '');
+	}
 
-    function filterStr(str) {
-        return str.split('@')[0];
-    }
-    return finalEmails.length;
+	function filterStr(str) {
+		return str.split('@')[0];
+	}
+	return finalEmails.length;
 };
 
-const uniqueEmails = numUniqueEmails(emails)
-console.log('ANSWER', uniqueEmails)
+const uniqueEmails = numUniqueEmails(emails);
+console.log('ANSWER', uniqueEmails);
