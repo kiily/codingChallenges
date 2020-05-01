@@ -33,5 +33,3 @@ export function caesarCypher(string, factor) {
 	return cypherStr;
 
 }
-
-console.log(caesarCypher('b', 3));

@@ -1,6 +1,6 @@
 module.exports = {
 	'env': {
-		'es6': true,
+		'es2020': true,
 		'node': true,
 		"jest/globals": true
 	},
@@ -10,6 +10,7 @@ module.exports = {
 		'Atomics': 'readonly',
 		'SharedArrayBuffer': 'readonly'
 	},
+	"parser": "babel-eslint",
 	'parserOptions': {
 		'ecmaVersion': 2018,
 		'sourceType': 'module'
