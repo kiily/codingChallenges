@@ -14,7 +14,7 @@ class HashTable {
     
 	/**
      * O(1) if not collisions but can be a problem in limited memory
-     * and can actually become O(n);
+     * and can actually become O(n).
      */
 	get(key) {
 		const address = this._address(key);
@@ -35,6 +35,19 @@ class HashTable {
 			this.data[address] = [];
 		} 
 		this.data[address].push([key, value]);
+	}
+    
+	/**
+     * Iterate over all the keys in the hash table
+     */
+	keys() {
+		const keysArray = [];
+		for (let i = 0; i < this.data.length; i++) {
+			if (this.data[i]) {
+				keysArray.push(this.data[i][0]);
+			}
+		}
+		return keysArray;
 	}
 }
 
