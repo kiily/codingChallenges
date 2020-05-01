@@ -12,7 +12,6 @@ export function twoCharacters(str) {
 			uniqueLetters.push(currentLetter);
 		}
 	}
-	console.log('uniq', uniqueLetters);
 
 	let combinations = [];
 	uniqueLetters.forEach((letter, index) => {
@@ -24,7 +23,6 @@ export function twoCharacters(str) {
 		uniqueLetters.splice(index, 1);
 	});
 	let lengths = [];
-	console.log('combinations', combinations);
 
 	combinations.forEach((comb) => {
 		let finalString = '';
@@ -37,17 +35,13 @@ export function twoCharacters(str) {
 		}
 		const reg1 = new RegExp(`${comb[0]}{2,}`);
 		const reg2 = new RegExp(`/${comb[1]}{2,}`);
-		console.log(reg1);
 		const res = reg1.exec(finalString);
-		console.log('res', res);
 		// Should replace the letters that are not alternating
 		finalString = finalString.replace(reg1, `${comb[0]}`);
 		finalString = finalString.replace(reg2, `${comb[1]}`);
-		console.log('final', finalString);
 		lengths.push(finalString.length);
 	});
 
-	console.log(lengths);
 	// Get all possible combinations of characters to delete
 	// i.e. get all the possible pairs of characters from a string
 	// Note that [a,b] and [b,a] are essentially the same pair

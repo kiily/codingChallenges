@@ -7,7 +7,7 @@
  * @param {number[]} A
  * @return {number[]}
  */
-const sortArrayByParity = function(A) {
+export const sortArrayByParity = function(A) {
 	let evenArray = [];
 	let oddArray = [];
 	for (let i = 0; i < A.length; i++) {

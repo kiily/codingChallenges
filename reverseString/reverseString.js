@@ -1,0 +1,1 @@
+export const reverseStr = (str) => [...str].reverse().join('');
