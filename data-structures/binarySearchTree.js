@@ -71,7 +71,6 @@ class BinarySearchTree {
 			let parentNode = null;
 			while(currentNode) {
 				if (value < currentNode.value) {
-					console.log(currentNode.value);
 					// Go left
 					parentNode = currentNode;
 					currentNode = currentNode.left;
@@ -148,6 +147,83 @@ class BinarySearchTree {
 			}
 		}
 	}
+	
+	breadthFirstSearch() {
+		let currentNode = this.root;
+		let list = [];
+		let queue = [currentNode];
+		while(queue.length) {
+			const currentNode = queue.shift();
+			list.push(currentNode.value);
+			if (currentNode.left) {
+				queue.push(currentNode.left);
+			}
+			if (currentNode.right) {
+				queue.push(currentNode.right);
+			}
+		}
+		return list;
+	}
+
+	breadthFirstSearchRecursive(queue, list) {
+		if (!queue.length) {
+			return list;
+		}
+		let currentNode = queue.shift();
+		list.push(currentNode.value);
+		if (currentNode.left) {
+			queue.push(currentNode.left);
+		}
+		if (currentNode.right) {
+			queue.push(currentNode.right);
+		}
+		return this.breadthFirstSearchRecursive(queue, list);
+	}
+
+	DFSInOrder() {
+		const traverseInOrder = (node, list) => {
+			if (node.left) {
+				traverseInOrder(node.left, list);
+			}
+			list.push(node.value);
+			if (node.right) {
+				traverseInOrder(node.right, list);
+			}
+			return list;
+		};
+		return traverseInOrder(this.root, []);
+	}
+
+	DFSPostOrder() {
+		const traversePostOrder = (node, list) => {
+			if (node.left) {
+				traversePostOrder(node.left, list);
+			}
+			if (node.right) {
+				traversePostOrder(node.right, list);
+			}
+			list.push(node.value);
+			return list;
+		};
+		return traversePostOrder(this.root, []);
+		
+	}
+
+	DFSPreOrder() {
+		// Same as in order so except we push first
+		const traversePreOrder = (node, list) => {
+			list.push(node.value);
+			if (node.left) {
+				traversePreOrder(node.left, list);
+			}
+			if (node.right) {
+				traversePreOrder(node.right, list);
+			}
+			return list;
+		};
+		return traversePreOrder(this.root, []);
+		
+	}
 }
 
 /**
@@ -161,8 +237,15 @@ function traverse(node) {
 }
 const tree = new BinarySearchTree();
 tree.insert(9);
-tree.insert(10);
-tree.insert(3);
-console.log(JSON.stringify(traverse(tree.root)));
-console.log(tree.remove(3));
-console.log(JSON.stringify(traverse(tree.root)));
+tree.insert(4);
+tree.insert(6);
+tree.insert(20);
+tree.insert(170);
+tree.insert(15);
+tree.insert(1);
+// console.log(JSON.stringify(traverse(tree.root)));
+// console.log(tree.breadthFirstSearch());
+// console.log(tree.breadthFirstSearchRecursive([tree.root], []));
+console.log(tree.DFSInOrder());
+console.log(tree.DFSPreOrder());
+console.log(tree.DFSPostOrder());
