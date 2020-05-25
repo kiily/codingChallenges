@@ -5,6 +5,7 @@
 
 //For example: fibonacciRecursive(6) should return 8
 
+// Also an example of dynamic programming - this is a bottom-up solution
 function fibonacciIterative(n){ // O(n - 2) --> O(n)
 	let arr = [0, 1];
 	for (let i = 2; i <= n; i++) {
@@ -27,3 +28,24 @@ console.log(fibonacciRecursive(3));
 console.log(fibonacciRecursive(4));
 console.log(fibonacciRecursive(5));
 console.log(fibonacciRecursive(6));
+
+// This is a top-down memoization approach
+function fibonacciDynamicProgramming() {
+	let cache = {};
+	return function fib(n) {
+		if (n in cache) {
+			return cache[n];
+		}
+		if (n < 2) {
+			cache[n] = n;
+			return cache[n];
+		} else {
+			cache[n] = fib(n-1) + fib(n-2);
+			return cache[n];
+		}
+	};
+}
+
+
+const fiboMemo = fibonacciDynamicProgramming();
+console.log(fiboMemo(3));
